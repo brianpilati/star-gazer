@@ -1,0 +1,74 @@
+/* line 17, ../compass/assets/compass/sass/star.scss */
+html {
+  background-color: #17202d;
+}
+
+/* line 22, ../compass/assets/compass/sass/star.scss */
+#horizon {
+  position: absolute;
+  top: 50%;
+  margin-top: -100px;
+  height: 200px;
+  left: 0px;
+  right: 0px;
+  border: 1px solid white;
+  background: grey;
+}
+
+/* line 34, ../compass/assets/compass/sass/star.scss */
+.star {
+  content: "";
+  background-color: white;
+  position: absolute;
+  border-radius: 3px;
+  margin-top: -2px;
+  margin-left: -2px;
+  width: 4px;
+  height: 4px;
+  z-index: 11;
+}
+
+/* line 47, ../compass/assets/compass/sass/star.scss */
+.starGrow {
+  -webkit-animation: starGrow .2s ease-in forwards;
+  /* Chrome, Safari, Opera */
+  animation: starGrow .2s ease-in forwards;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes starGrow {
+  /* line 56, ../compass/assets/compass/sass/star.scss */
+  to {
+    border-radius: 14px;
+    margin-left: -8px;
+    margin-top: -8px;
+    background: red;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Standard syntax */
+@keyframes starGrow {
+  /* line 70, ../compass/assets/compass/sass/star.scss */
+  to {
+    border-radius: 14px;
+    margin-left: -8px;
+    margin-top: -8px;
+    background: red;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* line 81, ../compass/assets/compass/sass/star.scss */
+#telescope {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 75px;
+  border: 1px solid #333;
+  background-color: white;
+  z-index: 10;
+  opacity: 1;
+}

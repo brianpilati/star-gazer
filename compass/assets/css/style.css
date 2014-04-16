@@ -1,0 +1,19 @@
+/* line 6, ../compass/sass/style.scss */
+html {
+  background-color: #17202d;
+}
+/* line 8, ../compass/sass/style.scss */
+html:before {
+  content: "";
+  background-color: transparent;
+  position: absolute;
+  border-radius: 3px;
+  top: 50%;
+  left: 50%;
+  margin-top: -2px;
+  margin-left: -2px;
+  width: 4px;
+  height: 4px;
+  z-index: 10;
+  box-shadow: 80px 140px white, -120px -60px white, 70px -40px white, 300px 90px white, -190px -220px white, 190px -90px white, -220px 60px white, 320px 120px white, -410px 90px white, -20px 220px white, 120px -220px white;
+}
