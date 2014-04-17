@@ -1,10 +1,3 @@
-$("#telescope").draggable({
-    drag: function(event, ui) {
-        // Remove .dropClass if it exists (if #draggable has already been dropped)
-        $(this).removeClass('dropClass');
-    }
-});
-
 function Stars(stars) {
     init: {
         this.buildUniverse(stars);
@@ -18,6 +11,7 @@ Stars.prototype = {
         this.calculateHorizon();
         this.generateStars();
         this.bindStarEvent();
+        this.bindTelescopeEvent();
     },
 
     calculateHorizon: function() 
@@ -64,16 +58,26 @@ Stars.prototype = {
         $(".star").droppable({
             // tolerance can be set to 'fit', 'intersect', 'pointer', or 'touch'
             tolerance: 'touch',
-            // Add .hoverClass whenever #draggable is being hovered over #droppable
             over: function(event, ui) {
                 $(this).addClass('starGrow');
-                $(this).removeClass('starShrink');
             },
-            // Remove .hoverClass whenever #draggable is no longer hovered over #droppable
             out: function(event, ui) {
-                $(this).addClass('starShrink');
                 $(this).removeClass('starGrow');
             },
+        });
+    },
+
+    bindTelescopeEvent: function() 
+    {
+        $("#telescope").draggable({
+            drag: function(event, ui) {
+                //$(this).removeClass('dropClass');
+            },
+
+            stop: function(event, ui) {
+                $(this).css({'left': '25px', 'top': '25px'});
+                $('.star').removeClass('starGrow');
+            }
         });
     }
 }

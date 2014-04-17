@@ -5,13 +5,18 @@
         <script src="lib/jquery.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-                stars = new Stars(25);
+                stars = new Stars(2000);
             });
         </script>
     </head>
     <body>
         <div id="horizon"></div>
-        <div id="telescope"></div>
+        <div id="telescope">
+            <div id="rim"></div>
+            <div id="highlight"></div>
+            <div id="glass"></div>
+            <div id="handle"></div>
+        </div>
         <script src="lib/jquery-ui.min.js"></script>
         <script src="js/star.js"></script>
     </body>

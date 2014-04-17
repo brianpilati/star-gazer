@@ -3,21 +3,21 @@ html {
   background-color: #17202d;
 }
 
-/* line 22, ../compass/assets/compass/sass/star.scss */
+/* line 21, ../compass/assets/compass/sass/star.scss */
 #horizon {
   position: absolute;
   top: 50%;
-  margin-top: -100px;
-  height: 200px;
+  margin-top: -200px;
+  height: 400px;
   left: 0px;
   right: 0px;
   border: 1px solid white;
   background: grey;
+  z-index: 1;
 }
 
-/* line 34, ../compass/assets/compass/sass/star.scss */
+/* line 33, ../compass/assets/compass/sass/star.scss */
 .star {
-  content: "";
   background-color: white;
   position: absolute;
   border-radius: 3px;
@@ -28,7 +28,7 @@ html {
   z-index: 11;
 }
 
-/* line 47, ../compass/assets/compass/sass/star.scss */
+/* line 44, ../compass/assets/compass/sass/star.scss */
 .starGrow {
   -webkit-animation: starGrow .2s ease-in forwards;
   /* Chrome, Safari, Opera */
@@ -37,12 +37,12 @@ html {
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes starGrow {
-  /* line 56, ../compass/assets/compass/sass/star.scss */
+  /* line 52, ../compass/assets/compass/sass/star.scss */
   to {
     border-radius: 14px;
     margin-left: -8px;
     margin-top: -8px;
-    background: red;
+    background: white;
     width: 18px;
     height: 18px;
   }
@@ -50,25 +50,70 @@ html {
 
 /* Standard syntax */
 @keyframes starGrow {
-  /* line 70, ../compass/assets/compass/sass/star.scss */
+  /* line 65, ../compass/assets/compass/sass/star.scss */
   to {
     border-radius: 14px;
     margin-left: -8px;
     margin-top: -8px;
-    background: red;
+    background: white;
     width: 18px;
     height: 18px;
   }
 }
 
-/* line 81, ../compass/assets/compass/sass/star.scss */
+/* line 84, ../compass/assets/compass/sass/star.scss */
 #telescope {
   position: absolute;
   width: 100px;
   height: 100px;
-  border-radius: 75px;
-  border: 1px solid #333;
+  left: 25px;
+  top: 25px;
+  border-radius: 50px;
+  z-index: 3;
+}
+/* line 93, ../compass/assets/compass/sass/star.scss */
+#telescope #rim {
+  position: absolute;
+  top: 0px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  z-index: 3;
+  border: 3px solid white;
+  margin-left: -3px;
+  margin-top: -3px;
+  background-color: transparent;
+}
+/* line 101, ../compass/assets/compass/sass/star.scss */
+#telescope #glass {
+  position: absolute;
+  top: 0px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  z-index: 3;
   background-color: white;
-  z-index: 10;
-  opacity: 1;
+  opacity: .2;
+}
+/* line 107, ../compass/assets/compass/sass/star.scss */
+#telescope #highlight {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 25px;
+  height: 25px;
+  border-radius: 12.5px;
+  background-color: white;
+  opacity: .3;
+}
+/* line 118, ../compass/assets/compass/sass/star.scss */
+#telescope #handle {
+  position: absolute;
+  top: 101px;
+  left: 38.5px;
+  width: 25px;
+  height: 50px;
+  background-color: brown;
+  border: 1px solid white;
+  z-index: 2;
 }

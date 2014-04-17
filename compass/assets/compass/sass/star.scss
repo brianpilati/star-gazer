@@ -2,7 +2,8 @@
 
 $star: rgba(255,255,255,1);
 $space: rgba(23,32,45,1);
-$nova: rgba(255,0,0,1);
+//$nova: rgba(255,0,0,1);
+$nova: rgba(255,255,255,1);
 
 $star_size_normal: 4px;
 $star_size_magnified: 18px;
@@ -13,26 +14,23 @@ $star_margin_magnified: -8px;
 $star_border-radius_normal: 3px;
 $star_border-radius_magnified: 14px;
 
-html
-{
+html {
     background-color: $space;
 }
 
-#horizon
-{
+#horizon {
     position: absolute;
     top: 50%;
-    margin-top: -100px;
-    height: 200px;
+    margin-top: -200px;
+    height: 400px;
     left: 0px;
     right: 0px;
     border: 1px solid white;
     background: grey;
+    z-index: 1;
 }
-    
-.star
-{
-    content: "";
+
+.star {
     background-color: $star;
     position: absolute;
     border-radius: $star_border-radius_normal;
@@ -43,15 +41,13 @@ html
     z-index: 11;
 }
 
-.starGrow
-{
+.starGrow {
     -webkit-animation: starGrow .2s ease-in forwards; /* Chrome, Safari, Opera */
     animation: starGrow .2s ease-in forwards;
 }
 
 /* Chrome, Safari, Opera */
-@-webkit-keyframes starGrow
-{
+@-webkit-keyframes starGrow {
     from { }
     to {
         border-radius: $star_border-radius_magnified;
@@ -64,8 +60,7 @@ html
 }
 
 /* Standard syntax */
-@keyframes starGrow
-{
+@keyframes starGrow {
     from { }
     to {
         border-radius: $star_border-radius_magnified;
@@ -77,14 +72,57 @@ html
     }
 } 
 
-#telescope
-{ 
+@mixin glass {
     position: absolute;
-    width:100px; 
-    height:100px; 
-    border-radius: 75px;
-    border: 1px solid #333; 
-    background-color: white;
-    z-index: 10;
-    opacity: 1;
+    top: 0px;
+    width: 100px; 
+    height: 100px; 
+    border-radius: 50px;
+    z-index: 3;
+}
+
+#telescope { 
+    position: absolute;
+    width: 100px; 
+    height: 100px; 
+    left: 25px;
+    top: 25px;
+    border-radius: 50px;
+    z-index: 3;
+
+    #rim {
+        @include glass;
+        border: 3px solid white; 
+        margin-left: -3px;
+        margin-top: -3px;
+        background-color: transparent;
+    }
+
+    #glass {
+        @include glass;
+        background-color: white;
+        opacity: .2;
+    }
+
+    #highlight {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 25px;
+        height: 25px;
+        border-radius: 12.5px;
+        background-color: white;
+        opacity: .3;
+    }
+
+    #handle {
+        position: absolute;
+        top: 101px;
+        left: 38.5px;
+        width: 25px;
+        height: 50px;
+        background-color: brown;
+        border: 1px solid white;
+        z-index: 2;
+    }
 }
