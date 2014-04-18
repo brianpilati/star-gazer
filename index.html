@@ -5,17 +5,33 @@
         <script src="lib/jquery.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-                stars = new Stars(2000);
+                stars = new Stars(500);
             });
         </script>
     </head>
     <body>
         <div id="horizon"></div>
         <div id="telescope">
-            <div id="rim"></div>
-            <div id="highlight"></div>
-            <div id="glass"></div>
-            <div id="handle"></div>
+            <div id="rim">
+                <div id="rimEffect"></div>
+                <div id="highlight"></div>
+                <div id="glass"></div>
+            </div>
+            <div id="handle">
+                <div id="handleSilver">
+                    <div class="handleRingTop">
+                        <div class="handleRing"></div>
+                        <div class="handleRing"></div>
+                    </div>
+                    <div class="handleRingTop"></div>
+                    <div id="handleHighlight"></div>
+                    <div class="handleRingBottom">
+                        <div class="handleRing"></div>
+                        <div class="handleRing"></div>
+                    </div>
+                </div>
+                <div id="handleHighlight"></div>
+            </div>
         </div>
         <script src="lib/jquery-ui.min.js"></script>
         <script src="js/star.js"></script>

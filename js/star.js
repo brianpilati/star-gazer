@@ -24,7 +24,12 @@ Stars.prototype = {
     generateStars: function() 
     {
         for(var index=0; index<this.numberOfStars; index++) {
-            var starBirth = $('<div class="star"></div>');
+            var starSize = this.generateStarSize();
+            var starColor = this.generateStarColor(starSize);
+            var starBirth = $('<div class="' + starSize + ' star ' + starColor + '"></div>');
+            if (starSize === "super") {
+                starBirth.append('<div class="craters"><div class="superCraters"></div></div>');
+            }
             starBirth.css(this.generateCss());
             $('#horizon').append(starBirth);
         }
@@ -36,6 +41,29 @@ Stars.prototype = {
             'left': this.generateLeftPosition(),
             'top': this.generateTopPosition()
         };
+    },
+
+    generateStarColor: function(starSize)
+    {
+        if (starSize === 'super') {
+            return 'white';
+        } else {
+            return 'white';
+        }
+    },
+
+    generateStarSize: function()
+    {
+        var size = 'small';
+        var randomSize = Math.random() * 100 + 1;
+        if (randomSize > 99) {
+            size = 'super';
+        } else if (randomSize > 90) {
+            size = 'large';
+        } else if (randomSize > 55) {
+            size = 'medium';
+        }
+        return size;
     },
 
     generateRandomPosition: function(max)
@@ -59,10 +87,30 @@ Stars.prototype = {
             // tolerance can be set to 'fit', 'intersect', 'pointer', or 'touch'
             tolerance: 'touch',
             over: function(event, ui) {
-                $(this).addClass('starGrow');
+                var starClass = $(this).attr('class');
+                if (starClass.match(/^large/g)) {
+                    $(this).addClass('largeGrowth');
+                } else if (starClass.match(/^super/g)) {
+                    $(this).addClass('superGrowth');
+                    $(this).find('.craters').show();
+                } else if (starClass.match(/^medium/g)) {
+                    $(this).addClass('mediumGrowth');
+                } else {
+                    $(this).addClass('smallGrowth');
+                }
             },
             out: function(event, ui) {
-                $(this).removeClass('starGrow');
+                var starClass = $(this).attr('class');
+                if (starClass.match(/^large/g)) {
+                    $(this).removeClass('largeGrowth');
+                } else if (starClass.match(/^super/g)) {
+                    $(this).removeClass('superGrowth');
+                    $(this).find('.craters').hide();
+                } else if (starClass.match(/^medium/g)) {
+                    $(this).removeClass('mediumGrowth');
+                } else {
+                    $(this).removeClass('smallGrowth');
+                }
             },
         });
     },
@@ -70,13 +118,13 @@ Stars.prototype = {
     bindTelescopeEvent: function() 
     {
         $("#telescope").draggable({
-            drag: function(event, ui) {
-                //$(this).removeClass('dropClass');
-            },
-
             stop: function(event, ui) {
                 $(this).css({'left': '25px', 'top': '25px'});
-                $('.star').removeClass('starGrow');
+                $('.star').removeClass('smallGrowth');
+                $('.star').removeClass('mediumGrowth');
+                $('.star').removeClass('largeGrowth');
+                $('.star').removeClass('superGrowth');
+                $('.craters').hide();
             }
         });
     }
