@@ -7,7 +7,7 @@ function Stars(stars) {
 Stars.prototype = {
     buildUniverse: function(stars) 
     {
-        this.numberOfStars = stars | 2;
+        this.numberOfStars = stars || 2;
         this.calculateHorizon();
         this.generateStars();
         this.bindStarEvent();
@@ -18,7 +18,6 @@ Stars.prototype = {
     {
         this.horizonWidth = parseInt($('#horizon').css('width'), 10);
         this.horizonHeight = parseInt($('#horizon').css('height'), 10);
-
     },
 
     generateStars: function() 
@@ -73,12 +72,12 @@ Stars.prototype = {
 
     generateLeftPosition: function() 
     {
-        return this.generateRandomPosition(this.horizonWidth) + 'px';
+        return this.generateRandomPosition(this.__universeWidth) + 'px';
     },
 
     generateTopPosition: function() 
     {
-        return this.generateRandomPosition(this.horizonHeight) + 'px';
+        return this.generateRandomPosition(this.__universeHeight) + 'px';
     },
 
     bindStarEvent: function()
